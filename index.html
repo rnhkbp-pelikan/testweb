@@ -855,6 +855,9 @@
   <link rel="stylesheet" href="css/kegiatan.css">
   <link rel="stylesheet" href="css/foto.css">
   <link rel="stylesheet" href="css/pengurus.css">
+  <link rel="stylesheet" href="css/kontak.css">
+  <link rel="stylesheet" href="css/tema.css">
+  <script src="js/kontak-data.js"></script>
   <script src="js/pengurus-data.js"></script>
   <script src="js/kegiatan-data.js"></script>
 </head>
@@ -1012,7 +1015,7 @@
           <i class="fas fa-users-cog"></i>
         </div>
         <h4>Kepengurusan</h4>
-        <p>Profil lengkap pengurus Naposobulung, Parguru, Inang Paniroi, dan 7 Seksi.</p>
+        <p>Profil lengkap pengurus Naposobulung, Parguru, Paniroi Naposobulung, dan 10 Seksi.</p>
         <a href="#profil" class="btn">Lihat Profil</a>
       </div>
     </div>
@@ -1129,49 +1132,10 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-5">
-        <div class="contact-info">
+        <div class="contact-info kt-wrap">
           <h2>Hubungi Kami</h2>
-          
-          <div class="info-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <div>
-              <h5>Alamat</h5>
-              <a href="https://maps.app.goo.gl/xH5D7FNRyEXDWFrF8" target="_blank" rel="noopener">Jl. Pelikan 5 No. 2, Tegal Sari Mandala II, Kec. Medan Denai, Kota Medan, Sumatera Utara 20371</a><br>
-              <a class="map-pill" href="https://maps.app.goo.gl/xH5D7FNRyEXDWFrF8" target="_blank" rel="noopener"><i class="fas fa-location-arrow"></i> Buka di Google Maps</a>
-            </div>
-          </div>
-          
-          <div class="info-item">
-            <i class="fas fa-phone"></i>
-            <div>
-              <h5>Telepon</h5>
-              <a href="tel:+6281360856654">0813-6085-6654</a>
-            </div>
-          </div>
-          
-          <div class="info-item">
-            <i class="fas fa-envelope"></i>
-            <div>
-              <h5>Email</h5>
-              <a href="mailto:rnhkbppelikan@gmail.com">rnhkbppelikan@gmail.com</a>
-            </div>
-          </div>
-          
-          <div class="info-item">
-            <i class="fab fa-instagram"></i>
-            <div>
-              <h5>Instagram</h5>
-              <a href="https://www.instagram.com/nhkbppelikanrealaccount" target="_blank">
-                @nhkbppelikanrealaccount
-              </a>
-            </div>
-          </div>
-          
-          <div class="social-links">
-            <a href="https://www.instagram.com/nhkbppelikanrealaccount" target="_blank" class="social-btn">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </div>
+          <div class="kt-list" id="kontakItems"></div>
+          <div class="kt-jam" id="kontakJam"></div>
         </div>
       </div>
       
@@ -1181,22 +1145,29 @@
           <form id="formPesan">
             <div class="row">
               <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" placeholder="Nama Lengkap" required>
+                <input type="text" id="pesanNama" class="form-control" placeholder="Nama Lengkap" required maxlength="60" autocomplete="name">
               </div>
               <div class="col-md-6 mb-3">
-                <input type="email" class="form-control" placeholder="Email" required>
+                <input type="email" id="pesanEmail" class="form-control" placeholder="Email (opsional)" autocomplete="email">
               </div>
             </div>
             <div class="mb-3">
-              <input type="text" class="form-control" placeholder="Subjek" required>
+              <input type="text" id="pesanSubjek" class="form-control" placeholder="Subjek" required maxlength="80">
             </div>
             <div class="mb-3">
-              <textarea class="form-control" rows="4" placeholder="Pesan Anda" required></textarea>
+              <textarea id="pesanIsi" class="form-control" rows="4" placeholder="Pesan Anda" required maxlength="1000"></textarea>
             </div>
             <button type="submit" class="btn btn-primary w-100">
-              <i class="fas fa-paper-plane me-2"></i>Kirim Pesan
+              <i class="fab fa-whatsapp me-2"></i>Kirim via WhatsApp
             </button>
+            <p class="kt-note"><i class="fab fa-whatsapp"></i>Pesan dikirim lewat WhatsApp admin. Balasan otomatis muncul di sini.</p>
           </form>
+          <div class="kt-reply" id="ktReply" hidden>
+            <div class="kt-reply-head"><img src="logo.png" alt=""><div><b>Balasan otomatis</b><span id="ktWaktu"></span></div></div>
+            <div class="kt-bubble" id="ktBubble"></div>
+            <div class="kt-bubble" id="ktBubble2" hidden></div>
+            <div class="kt-reply-foot">Jika WhatsApp tidak terbuka, <a id="ktWaLink" href="#" target="_blank" rel="noopener">klik di sini untuk melanjutkan</a>.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1236,14 +1207,14 @@
         <ul class="footer-links">
           <li><a href="#profil">Ketua Naposobulung</a></li>
           <li><a href="#profil">Sekretaris & Bendahara</a></li>
-          <li><a href="#profil">7 Seksi Naposo</a></li>
-          <li><a href="#profil">Inang Paniroi</a></li>
+          <li><a href="#profil">10 Seksi Naposo</a></li>
+          <li><a href="#profil">Paniroi Naposobulung</a></li>
         </ul>
       </div>
       
       <div class="col-lg-3 mb-4">
         <h5>Info Kontak</h5>
-        <ul class="footer-contact">
+        <ul class="footer-contact" id="footKontak">
           <li><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/xH5D7FNRyEXDWFrF8" target="_blank" rel="noopener">Jl. Pelikan 5 No. 2, Medan Denai</a></li>
           <li><i class="fas fa-phone"></i> <a href="tel:+6281360856654">0813-6085-6654</a></li>
           <li><i class="fas fa-envelope"></i> <a href="mailto:rnhkbppelikan@gmail.com">rnhkbppelikan@gmail.com</a></li>
@@ -1577,10 +1548,46 @@ db.collection("artikel")
     document.getElementById('artikelTerbaru').innerHTML = html;
   });
 
-// ================= FORM HANDLER =================
-document.getElementById('formPesan')?.addEventListener('submit', function(e) {
+// ================= KONTAK, FORMULIR WHATSAPP & BALASAN OTOMATIS =================
+let KT = window.KONTAK.gabung({});
+function renderKontak(d) {
+  KT = d;
+  document.getElementById('kontakItems').innerHTML = window.KONTAK.itemsHTML(d);
+  document.getElementById('kontakJam').innerHTML = window.KONTAK.jamHTML(d);
+  const foot = document.getElementById('footKontak');
+  if (foot) foot.innerHTML = window.KONTAK.footerHTML(d);
+  document.getElementById('ktWaLink').href = window.KONTAK.waLink(d);
+}
+renderKontak(KT);                                  // langsung tampil dengan data bawaan
+window.KONTAK.muat(db).then(renderKontak);         // lalu diganti data yang diatur admin
+
+document.getElementById('formPesan')?.addEventListener('submit', function (e) {
   e.preventDefault();
-  alert('✅ Terima kasih! Pesan Anda telah terkirim.');
+  const K = window.KONTAK, d = KT;
+  const nama = document.getElementById('pesanNama').value.trim();
+  const email = document.getElementById('pesanEmail').value.trim();
+  const subjek = document.getElementById('pesanSubjek').value.trim();
+  const isi = document.getElementById('pesanIsi').value.trim();
+  const sapa = K.sapaan();
+
+  // 1) pesan yang dikirim ke WhatsApp admin
+  const teks = sapa + ' admin RNHKBP Pelikan 🙏\n\nNama: ' + nama + (email ? '\nEmail: ' + email : '') +
+    '\nSubjek: ' + subjek + '\n\nPesan:\n' + isi;
+  const url = K.waLink(d, teks);
+  window.open(url, '_blank', 'noopener');
+
+  // 2) balasan otomatis di website (menyesuaikan waktu & jam layanan admin)
+  const v = { sapaan: sapa, nama: nama.split(/\s+/)[0], jam: K.jamTeks(d) };
+  document.getElementById('ktBubble').textContent = K.isi(d.balasan, v);
+  const luar = !K.dalamJam(d), b2 = document.getElementById('ktBubble2');
+  b2.textContent = luar ? K.isi(d.balasanLuar, v) : '';
+  b2.hidden = !luar;
+  document.getElementById('ktWaktu').textContent = ' · ' + new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+  document.getElementById('ktWaLink').href = url;
+  const box = document.getElementById('ktReply');
+  box.hidden = false;
+  box.style.animation = 'none'; void box.offsetWidth; box.style.animation = '';
+  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   this.reset();
 });
 

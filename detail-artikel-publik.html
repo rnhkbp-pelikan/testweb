@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="css/publik.css">
   <link rel="stylesheet" href="css/foto.css">
+  <link rel="stylesheet" href="css/tema.css">
 </head>
 <body class="pub">
 
@@ -118,7 +119,7 @@
       </div>
       <div class="col-lg-4 mb-4">
         <h5>Info Kontak</h5>
-        <ul>
+        <ul id="footKontak">
           <li><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/xH5D7FNRyEXDWFrF8" target="_blank" rel="noopener">Jl. Pelikan 5 No. 2, Medan Denai</a></li>
           <li><i class="fas fa-phone"></i> <a href="tel:+6281360856654">0813-6085-6654</a></li>
           <li><i class="fas fa-envelope"></i> <a href="mailto:rnhkbppelikan@gmail.com">rnhkbppelikan@gmail.com</a></li>
@@ -301,6 +302,10 @@ async function muatTerkait() {
     $('relatedSection').style.display = 'block';
   } catch (e) { console.warn('Baca juga gagal:', e); }
 }
+</script>
+<script src="js/kontak-data.js"></script>
+<script>
+window.KONTAK.muat(db).then((d) => { const f = document.getElementById('footKontak'); if (f) f.innerHTML = window.KONTAK.footerHTML(d); });
 </script>
 <script src="js/pwa-init.js"></script>
 </body>

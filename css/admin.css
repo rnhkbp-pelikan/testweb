@@ -376,6 +376,7 @@ button{font:inherit;cursor:pointer}
 
 /* ---- Kegiatan (admin-kegiatan.html) ---- */
 .r-keg{--tint:#c2410c;--soft:#ffedd5}
+.r-kontak{--tint:#be185d;--soft:#fde7f3}
 .kg-sum{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px 22px;margin-bottom:20px}
 .kg-sum b{font-size:2rem;font-weight:800;color:var(--ink);line-height:1;font-variant-numeric:tabular-nums}
 .kg-sum span{color:var(--muted);font-size:.9rem}
