@@ -857,6 +857,8 @@
   <link rel="stylesheet" href="css/pengurus.css">
   <link rel="stylesheet" href="css/kontak.css">
   <link rel="stylesheet" href="css/tema.css">
+  <link rel="stylesheet" href="css/pengaturan.css">
+  <script src="js/pengaturan.js"></script>
   <script src="js/kontak-data.js"></script>
   <script src="js/pengurus-data.js"></script>
   <script src="js/kegiatan-data.js"></script>
@@ -1560,6 +1562,7 @@ function renderKontak(d) {
 }
 renderKontak(KT);                                  // langsung tampil dengan data bawaan
 window.KONTAK.muat(db).then(renderKontak);         // lalu diganti data yang diatur admin
+window.PENG.mulai(db);                            // tema (Normal/Natal) & teks berjalan
 
 document.getElementById('formPesan')?.addEventListener('submit', function (e) {
   e.preventDefault();
